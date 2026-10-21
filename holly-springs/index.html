@@ -12,7 +12,8 @@
 <meta property="og:title" content="Holly Springs, NC Homes &amp; Neighborhood Guide | Andrew Hill">
 <meta property="og:description" content="Holly Springs guide from a local broker. Request the current market report or a home value estimate.">
 <meta property="og:locale" content="en_US">
-<meta name="twitter:card" content="summary">
+<meta property="og:image" content="https://andrewhillrealtor.com/holly-springs/holly-springs-water-tower.jpg">
+<meta name="twitter:card" content="summary_large_image">
 
 <!-- FUB PIXEL GOES HERE (same code as the homepage, once installed) -->
 
@@ -120,8 +121,7 @@ footer{border-top:1px solid var(--line);padding:48px 0 40px;font-size:13px;color
 footer a{color:var(--silver);text-decoration:none}
 .foot-firm{font-size:11px;letter-spacing:.18em;text-transform:uppercase;line-height:2;margin-bottom:22px}
 .foot-legal{font-size:11px;opacity:.8;margin-top:18px;max-width:80ch}
-.hero{padding-top:64px}
-@media(max-width:860px){.hero{padding-top:44px}}
+video.hero-photo{aspect-ratio:16/9;background:#101012}
 </style>
 </head>
 <body>
@@ -136,7 +136,8 @@ footer a{color:var(--silver);text-decoration:none}
 <main>
 
 <div class="hero">
-  <div class="wrap">
+  <div class="wrap hero-grid">
+    <div>
     <p class="eyebrow">Holly Springs, NC · Wake County</p>
     <h1>Holly Springs Homes and Neighborhood Guide</h1>
     <p class="lede">I grew up next door in Fuquay-Varina and help people buy and sell homes in Holly Springs as a broker with DASH Carolina. This page covers the parts of town, the new employers, schools, parks, and what to check before you buy.</p>
@@ -144,6 +145,8 @@ footer a{color:var(--silver);text-decoration:none}
       <a class="btn-lux fill" href="#report">Get the Market Report</a>
       <a class="btn-lux" href="#value">What's My Home Worth?</a>
     </div>
+    </div>
+    <video class="hero-photo" src="holly-springs-aerial.mp4" poster="holly-springs-water-tower.jpg" autoplay muted loop playsinline preload="metadata" width="1280" height="720" aria-label="Aerial video of the Holly Springs water tower and surrounding neighborhoods"></video>
   </div>
 </div>
 
@@ -360,6 +363,7 @@ footer a{color:var(--silver);text-decoration:none}
 </footer>
 
 <script>
+(function(){var v=document.querySelector("video.hero-photo");if(v&&window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches){v.removeAttribute("autoplay");v.pause();}})();
 document.querySelectorAll('form.lead-form').forEach(function(formEl){
   formEl.addEventListener('submit', async function(e){
     e.preventDefault();
