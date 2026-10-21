@@ -1312,7 +1312,15 @@ footer a:hover{color:var(--plat)}
         s.onerror = function(){ /* offline or blocked: SVG stays */ };
         document.head.appendChild(s);
       }
-      if(document.readyState === 'complete') loadLeaflet();
+      // Load the live map only when the reader nears it, so the 2+ MB boundary
+      // download and map scripts don't compete with the top of the page.
+      var mapWrap = svgEl.parentNode || svgEl;
+      if('IntersectionObserver' in window){
+        var mapIO = new IntersectionObserver(function(entries){
+          if(entries.some(function(e){ return e.isIntersecting; })){ mapIO.disconnect(); loadLeaflet(); }
+        }, {rootMargin:'800px 0px'});
+        mapIO.observe(mapWrap);
+      } else if(document.readyState === 'complete') loadLeaflet();
       else window.addEventListener('load', loadLeaflet);
     })();
     </script>
