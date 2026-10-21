@@ -131,6 +131,8 @@ footer a{color:var(--silver);text-decoration:none}
 .foot-firm{font-size:11px;letter-spacing:.18em;text-transform:uppercase;line-height:2;margin-bottom:22px}
 .foot-legal{font-size:11px;opacity:.8;margin-top:18px;max-width:80ch}
 </style>
+<script src="/analytics.js" defer></script>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
 </head>
 <body>
 
@@ -363,6 +365,23 @@ footer a{color:var(--silver);text-decoration:none}
   </div>
 </section>
 
+<section id="more-guides" aria-labelledby="more-guides-h">
+  <div class="wrap">
+    <p class="eyebrow">More Community Guides</p>
+    <h2 id="more-guides-h" style="font-size:clamp(26px,3.4vw,34px);margin-top:14px">Compare other Triangle areas</h2>
+    <ul style="list-style:none;display:flex;flex-wrap:wrap;gap:12px 28px;margin-top:20px;padding:0">
+      <li><a href="/inside-the-beltline/">Inside the Beltline guide</a></li>
+      <li><a href="/north-hills/">North Hills guide</a></li>
+      <li><a href="/cary-apex/">Cary &amp; Apex guide</a></li>
+      <li><a href="/wake-forest/">Wake Forest guide</a></li>
+      <li><a href="/chapel-hill/">Chapel Hill guide</a></li>
+      <li><a href="/holly-springs/">Holly Springs guide</a></li>
+      <li><a href="/mcgees-crossroads/">McGee’s Crossroads guide</a></li>
+      <li><a href="/">Home page and land value map</a></li>
+    </ul>
+  </div>
+</section>
+
 </main>
 
 <footer>
@@ -387,6 +406,8 @@ document.querySelectorAll('form.lead-form').forEach(function(formEl){
     try {
       var res = await fetch(formEl.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } });
       if (!res.ok) throw new Error('send failed');
+      var fsJson = await res.json().catch(function(){ return {}; });
+      if (String(fsJson.success) === 'false') throw new Error('not delivered');
       formEl.querySelectorAll('input,textarea,select,button,.lf-note').forEach(function(el){ el.style.display = 'none'; });
       status.textContent = "Received. I'll send it over shortly. If it's urgent, call or text me at 984 · 464 · 7329.";
       if (typeof gtag === 'function') gtag('event', btn.dataset.event || 'lead_submit', { method: 'form' });
