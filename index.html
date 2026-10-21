@@ -3120,7 +3120,7 @@ document.querySelectorAll('form.lead-form').forEach(formEl => {
       if (String(fsJson.success) === 'false') throw new Error('not delivered');
       formEl.querySelectorAll('input,textarea,select,button,.lf-title,.lf-note').forEach(el => el.style.display = 'none');
       status.textContent = "Got it \u2014 I'll reach out shortly. If it's urgent, call or text me at 984\u2009\u00b7\u2009464\u2009\u00b7\u20097329.";
-      if (typeof gtag === 'function') gtag('event', btn.dataset.event || 'lead_submit', { method: 'form' });
+      if (typeof gtag === 'function') gtag('event', 'generate_lead', { form_id: btn.dataset.event || 'lead_form', page_path: location.pathname });
     } catch (err) {
       btn.disabled = false; btn.textContent = origLabel;
       const parts = ['New lead from website',''];

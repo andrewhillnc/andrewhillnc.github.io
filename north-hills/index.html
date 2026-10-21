@@ -404,7 +404,7 @@ document.querySelectorAll('form.lead-form').forEach(function(formEl){
       if (String(fsJson.success) === 'false') throw new Error('not delivered');
       formEl.querySelectorAll('input,textarea,select,button,.lf-note').forEach(function(el){ el.style.display = 'none'; });
       status.textContent = "Received. I'll send it over shortly. If it's urgent, call or text me at 984 · 464 · 7329.";
-      if (typeof gtag === 'function') gtag('event', btn.dataset.event || 'lead_submit', { method: 'form' });
+      if (typeof gtag === 'function') gtag('event', 'generate_lead', { form_id: btn.dataset.event || 'lead_form', page_path: location.pathname });
     } catch (err) {
       btn.disabled = false; btn.textContent = origLabel;
       var parts = ['New lead from North Hills page',''];

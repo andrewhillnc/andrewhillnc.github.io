@@ -5,10 +5,10 @@
 
    Events sent once live:
    - page_view          (automatic)
-   - lead_submit        (fired by each page's form script after FormSubmit confirms delivery)
+   - generate_lead      (fired by each page's form script after FormSubmit confirms delivery; form_id names the form)
    - phone_click        (any tel: link)
    - email_click        (any mailto: link)
-   Mark lead_submit and phone_click as key events in GA4 > Admin > Events. */
+   Mark generate_lead and phone_click as key events in GA4 > Admin > Events. */
 (function () {
   var GA_ID = 'G-36TBN94MMP';
   if (/X{6}/.test(GA_ID)) return;
