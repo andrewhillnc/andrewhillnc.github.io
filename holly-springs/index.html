@@ -125,6 +125,7 @@ video.hero-photo{aspect-ratio:16/9;background:#101012}
 </style>
 <script src="/analytics.js" defer></script>
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<style>.ah-bar{display:none}@media (max-width:680px){.ah-bar{display:grid;grid-template-columns:1fr 1fr 1.4fr;position:fixed;left:0;right:0;bottom:0;z-index:95;background:rgba(10,10,11,.96);border-top:1px solid rgba(255,255,255,.12);padding:8px 10px calc(8px + env(safe-area-inset-bottom));gap:8px}.ah-bar a{display:block;text-align:center;padding:12px 6px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#e9e6df;text-decoration:none;border:1px solid rgba(255,255,255,.22)}.ah-bar a.p{background:#e9e6df;color:#0a0a0b;border-color:#e9e6df}body{padding-bottom:72px}}.ah-mid{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:34px 0;margin:0}.ah-mid .wrap{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:center;text-align:center}.ah-mid p{margin:0 18px 0 0}</style>
 </head>
 <body>
 
@@ -161,6 +162,14 @@ video.hero-photo{aspect-ratio:16/9;background:#101012}
     <p>Two changes in the last few years affect home prices here. In September 2024, the Toll NC-540 Triangle Expressway was extended east from the NC-55 Bypass to I-40 in Garner, so Holly Springs now has a toll-road connection toward Research Triangle Park to the north and Garner to the east. Large biotech manufacturers have also opened in town.</p>
     <p>Amgen opened a manufacturing plant in Holly Springs in January 2025 and expects about 725 employees there by 2032. Fujifilm opened a $3.2 billion manufacturing site in September 2025 and plans about 1,400 jobs by 2031. New jobs at that scale add demand for housing within a short drive.</p>
   </div>
+</section>
+
+<section class="ah-mid" aria-label="Next steps">
+<div class="wrap">
+<p>Buying or selling in Holly Springs?</p>
+<a class="btn-lux fill track" data-event="mid_report_holly_springs" href="#report">Get the Market Report</a>
+<a class="btn-lux track" data-event="mid_value_holly_springs" href="#value">Get a Price Range for My Home</a>
+</div>
 </section>
 
 <section id="areas">
@@ -403,6 +412,7 @@ document.querySelectorAll('form.lead-form').forEach(function(formEl){
       if (typeof gtag === 'function') gtag('event', 'generate_lead', { form_id: btn.dataset.event || 'lead_form', page_path: location.pathname });
     } catch (err) {
       btn.disabled = false; btn.textContent = origLabel;
+      if (typeof gtag === 'function') gtag('event', 'form_error', { form_id: btn.dataset.event || 'lead_form', reason: 'send_failed', page_path: location.pathname });
       var parts = ['New lead from Holly Springs page',''];
       data.forEach(function(v,k){ if(k.charAt(0) !== '_' && v) parts.push(k.replace('_',' ') + ': ' + v); });
       status.innerHTML = 'That didn’t go through. <a href="mailto:andrew.hill@dashnc.com?subject=Website%20lead&body=' + encodeURIComponent(parts.join('\n')) + '">Tap here to send it by email instead</a>.';
@@ -410,5 +420,6 @@ document.querySelectorAll('form.lead-form').forEach(function(formEl){
   });
 });
 </script>
+<nav class="ah-bar" aria-label="Quick contact"><a href="tel:9844647329">Call</a><a href="sms:9844647329">Text</a><a class="p track" data-event="bar_report_holly_springs" href="#report">Market Report</a></nav>
 </body>
 </html>

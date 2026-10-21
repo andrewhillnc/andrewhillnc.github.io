@@ -123,6 +123,7 @@ video.hero-photo{aspect-ratio:16/9;background:#101012}
 <style>.hero-photo.map{object-fit:contain;background:#0a0a0b} .src{font-size:13px;color:var(--dim);margin-top:22px} .src a{color:var(--dim)}</style>
 <script src="/analytics.js" defer></script>
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<style>.ah-bar{display:none}@media (max-width:680px){.ah-bar{display:grid;grid-template-columns:1fr 1fr 1.4fr;position:fixed;left:0;right:0;bottom:0;z-index:95;background:rgba(10,10,11,.96);border-top:1px solid rgba(255,255,255,.12);padding:8px 10px calc(8px + env(safe-area-inset-bottom));gap:8px}.ah-bar a{display:block;text-align:center;padding:12px 6px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#e9e6df;text-decoration:none;border:1px solid rgba(255,255,255,.22)}.ah-bar a.p{background:#e9e6df;color:#0a0a0b;border-color:#e9e6df}body{padding-bottom:72px}}.ah-mid{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:34px 0;margin:0}.ah-mid .wrap{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:center;text-align:center}.ah-mid p{margin:0 18px 0 0}</style>
 </head>
 <body>
 
@@ -158,6 +159,14 @@ video.hero-photo{aspect-ratio:16/9;background:#101012}
 <p>Clayton is a town in western Johnston County, east of Garner along I-40. It had 26,307 people in the 2020 census, and recent Census estimates put it above 30,000.</p><p>Novo Nordisk already runs two manufacturing facilities in Clayton. In June 2024 it announced a $4.1 billion expansion here with 1,000 new jobs, with major construction phases expected to finish between 2027 and 2029. Grifols and Caterpillar are also large local employers.</p><p>Road names around Clayton changed in 2025. About 10 miles of the US-70 bypass between I-40 (Exit 309) and the US-70 Business interchange became I-42. Old US-70 Business became US-70 again, named Clayton Boulevard near the county line, and NC-42 in this area was renumbered NC-36. Older listings and maps may still use the former names.</p>
 <!-- ANDREW'S FIRST-HAND NOTES: deals done here, streets you know, what you tell buyers. -->
 <p class="src">Sources (checked Oct 21, 2026): <a href="https://www.johnstonnc.gov/content.cfm?id=1384" rel="noopener">Johnston County: Town of Clayton</a> · <a href="https://www.ncdot.gov/news/press-releases/Pages/2025/2025-02-07-johnston-county-sign-highway-changes.aspx" rel="noopener">NCDOT: Johnston County highway changes</a> · <a href="https://abc11.com/post/novo-nordisk-create-1000-new-jobs-invest-41b/14996105/" rel="noopener">ABC11: Novo Nordisk $4.1B investment</a> · <a href="https://townofclaytonnc.org/244/Greenways-Trails" rel="noopener">Town of Clayton greenways</a> · <a href="https://en.wikipedia.org/wiki/Clayton,_North_Carolina" rel="noopener">Population (Wikipedia, citing Census)</a></p>
+</div>
+</section>
+
+<section class="ah-mid" aria-label="Next steps">
+<div class="wrap">
+<p>Buying or selling in Clayton?</p>
+<a class="btn-lux fill track" data-event="mid_report_clayton" href="#report">Get the Market Report</a>
+<a class="btn-lux track" data-event="mid_value_clayton" href="#value">Get a Price Range for My Home</a>
 </div>
 </section>
 
@@ -443,6 +452,7 @@ document.querySelectorAll('form.lead-form').forEach(function(formEl){
       if (typeof gtag === 'function') gtag('event', 'generate_lead', { form_id: btn.dataset.event || 'lead_form', page_path: location.pathname });
     } catch (err) {
       btn.disabled = false; btn.textContent = origLabel;
+      if (typeof gtag === 'function') gtag('event', 'form_error', { form_id: btn.dataset.event || 'lead_form', reason: 'send_failed', page_path: location.pathname });
       var parts = ['New lead from Clayton page',''];
       data.forEach(function(v,k){ if(k.charAt(0) !== '_' && v) parts.push(k.replace('_',' ') + ': ' + v); });
       status.innerHTML = 'That didn’t go through. <a href="mailto:andrew.hill@dashnc.com?subject=Website%20lead&body=' + encodeURIComponent(parts.join('\n')) + '">Tap here to send it by email instead</a>.';
@@ -450,5 +460,6 @@ document.querySelectorAll('form.lead-form').forEach(function(formEl){
   });
 });
 </script>
+<nav class="ah-bar" aria-label="Quick contact"><a href="tel:9844647329">Call</a><a href="sms:9844647329">Text</a><a class="p track" data-event="bar_report_clayton" href="#report">Market Report</a></nav>
 </body>
 </html>
