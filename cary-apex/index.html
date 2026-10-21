@@ -414,7 +414,7 @@ document.querySelectorAll('form.lead-form').forEach(function(formEl){
       if (typeof gtag === 'function') gtag('event', btn.dataset.event || 'lead_submit', { method: 'form' });
     } catch (err) {
       btn.disabled = false; btn.textContent = origLabel;
-      var parts = ['New lead from Fuquay-Varina page',''];
+      var parts = ['New lead from Cary and Apex page',''];
       data.forEach(function(v,k){ if(k.charAt(0) !== '_' && v) parts.push(k.replace('_',' ') + ': ' + v); });
       status.innerHTML = 'That didn’t go through. <a href="mailto:andrew.hill@dashnc.com?subject=Website%20lead&body=' + encodeURIComponent(parts.join('\n')) + '">Tap here to send it by email instead</a>.';
     }
