@@ -1,7 +1,7 @@
 /* Site-wide Google Analytics 4 loader for andrewhillrealtor.com.
-   To turn tracking on, replace G-XXXXXXXXXX below with the GA4 Measurement ID
+   GA4 Measurement ID for the andrewhillrealtor.com web stream
    (GA4 > Admin > Data streams > the web stream > Measurement ID).
-   While the placeholder is here, nothing loads and nothing is tracked.
+   If GA_ID is ever reset to the G-XXXXXXXXXX placeholder, nothing loads.
 
    Events sent once live:
    - page_view          (automatic)
@@ -10,7 +10,7 @@
    - email_click        (any mailto: link)
    Mark lead_submit and phone_click as key events in GA4 > Admin > Events. */
 (function () {
-  var GA_ID = 'G-XXXXXXXXXX';
+  var GA_ID = 'G-36TBN94MMP';
   if (/X{6}/.test(GA_ID)) return;
 
   var s = document.createElement('script');
