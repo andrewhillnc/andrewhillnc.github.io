@@ -838,6 +838,7 @@ footer a:hover{color:var(--plat)}
           <p class="eyebrow" id="dmTier" style="margin:0 0 6px">Tap a marker</p>
           <p id="dmName" style="font-family:'Cormorant Garamond',serif;font-size:24px;margin:0 0 8px">The Land Value Map</p>
           <p id="dmNote" style="margin:0;font-size:14px;opacity:.8">The larger dots are towns and areas of Raleigh — tap one for the typical appraised land value across that area. The diamonds are neighborhoods whose county appraisal runs above their town's. Tap anything for the number.</p>
+          <p id="dmGuide" style="margin:14px 0 0;display:none"><a class="track" data-event="map_guide_click" href="#" style="color:var(--plat);font-size:11px;letter-spacing:.2em;text-transform:uppercase;text-decoration:underline;text-underline-offset:5px"></a></p>
         </div>
       </div>
 
@@ -1148,9 +1149,16 @@ footer a:hover{color:var(--plat)}
       var svgEl = document.getElementById('dirtMap');
       var leafEl = document.getElementById('dirtLeaflet');
       var tierEl = document.getElementById('dmTier'), nameEl = document.getElementById('dmName'), noteEl = document.getElementById('dmNote');
+      var GUIDE = {'Five Points':['/inside-the-beltline/','Inside the Beltline'],'Hayes Barton':['/inside-the-beltline/','Inside the Beltline'],'Country Club Hills':['/inside-the-beltline/','Inside the Beltline'],'Drewry Hills':['/inside-the-beltline/','Inside the Beltline'],'Budleigh \u00b7 Anderson Heights':['/inside-the-beltline/','Inside the Beltline'],'Oakwood \u00b7 Mordecai':['/inside-the-beltline/','Inside the Beltline'],'Glenwood-Brooklyn':['/inside-the-beltline/','Inside the Beltline'],'Boylan Heights':['/inside-the-beltline/','Inside the Beltline'],'Village District':['/inside-the-beltline/','Inside the Beltline'],'Village District \u00b7 Cameron Park':['/inside-the-beltline/','Inside the Beltline'],'Downtown Raleigh \u00b7 Inside the Beltline':['/inside-the-beltline/','Inside the Beltline'],'Downtown Raleigh Core':['/inside-the-beltline/','Inside the Beltline'],'Oberlin Village':['/inside-the-beltline/','Inside the Beltline'],'Roanoke Park':['/inside-the-beltline/','Inside the Beltline'],'ITB Core':['/inside-the-beltline/','Inside the Beltline'],'North Hills \u00b7 Midtown':['/north-hills/','North Hills'],'Midtown Raleigh':['/north-hills/','North Hills'],'Cary':['/cary-apex/','Cary & Apex'],'Apex':['/cary-apex/','Cary & Apex'],'Downtown Apex Historic':['/cary-apex/','Cary & Apex'],'Downtown Cary Historic':['/cary-apex/','Cary & Apex'],'Lochmere (Cary)':['/cary-apex/','Cary & Apex'],'MacGregor Downs':['/cary-apex/','Cary & Apex'],'Preston':['/cary-apex/','Cary & Apex'],'Wake Forest':['/wake-forest/','Wake Forest'],'Downtown Wake Forest Historic':['/wake-forest/','Wake Forest'],'Chapel Hill':['/chapel-hill/','Chapel Hill'],'Chapel Hill Historic \u00b7 Gimghoul':['/chapel-hill/','Chapel Hill'],'Meadowmont':['/chapel-hill/','Chapel Hill'],'Meadowmont (Chapel Hill)':['/chapel-hill/','Chapel Hill'],'Southern Village':['/chapel-hill/','Chapel Hill'],'Southern Village (Chapel Hill)':['/chapel-hill/','Chapel Hill'],'Greenwood (Chapel Hill)':['/chapel-hill/','Chapel Hill'],'Westwood (Chapel Hill)':['/chapel-hill/','Chapel Hill'],'The Oaks (Chapel Hill)':['/chapel-hill/','Chapel Hill'],'Laurel Hill \u00b7 Morgan Creek':['/chapel-hill/','Chapel Hill'],'Holly Springs':['/holly-springs/','Holly Springs'],'Fuquay-Varina':['/fuquay-varina/','Fuquay-Varina'],'Downtown Fuquay \u00b7 Main Street':['/fuquay-varina/','Fuquay-Varina'],'Downtown Varina \u00b7 Broad Street':['/fuquay-varina/','Fuquay-Varina'],'South Lakes (Fuquay-Varina)':['/fuquay-varina/','Fuquay-Varina'],'Garner':['/garner/','Garner'],'Downtown Garner':['/garner/','Garner'],'Vandora Springs':['/garner/','Garner'],'Lake Benson \u00b7 South Garner':['/garner/','Garner'],'Clayton':['/clayton/','Clayton'],'Downtown Clayton Historic':['/clayton/','Clayton'],'Riverwood (Clayton)':['/clayton/','Clayton'],'McGee\u2019s Crossroads':['/mcgees-crossroads/','McGee\u2019s Crossroads'],'McGee\'s Crossroads':['/mcgees-crossroads/','McGee\u2019s Crossroads']};
+      var guideP = document.getElementById('dmGuide'), guideA = guideP ? guideP.querySelector('a') : null;
       function show(tier, name, note){
         tierEl.textContent = TIER[tier]; tierEl.style.color = PANEL[tier];
         nameEl.textContent = name; noteEl.textContent = note;
+        if(!guideP) return;
+        var key = String(name).split(' \u2014 ')[0];
+        var g = GUIDE[key] || (key.indexOf('ITB Core') === 0 ? GUIDE['ITB Core'] : null);
+        if(g){ guideA.href = g[0]; guideA.textContent = 'Read the ' + g[1] + ' Guide'; guideP.style.display = 'block'; }
+        else { guideP.style.display = 'none'; }
       }
 
       /* ---------- SVG fallback (offline / preview) ---------- */
