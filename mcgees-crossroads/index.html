@@ -123,7 +123,7 @@ footer{border-top:1px solid var(--line);padding:48px 0 40px;font-size:13px;color
 footer a{color:var(--silver);text-decoration:none}
 .foot-firm{font-size:11px;letter-spacing:.18em;text-transform:uppercase;line-height:2;margin-bottom:22px}
 .foot-legal{font-size:11px;opacity:.8;margin-top:18px;max-width:80ch}
-</style>
+.lf-hint{font-size:12px;color:var(--dim);margin:-4px 0 12px}</style>
 <script src="/analytics.js" defer></script>
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <style>.ah-bar{display:none}@media (max-width:680px){.ah-bar{display:grid;grid-template-columns:1fr 1fr 1.4fr;position:fixed;left:0;right:0;bottom:0;z-index:95;background:rgba(10,10,11,.96);border-top:1px solid rgba(255,255,255,.12);padding:8px 10px calc(8px + env(safe-area-inset-bottom));gap:8px}.ah-bar a{display:block;text-align:center;padding:12px 6px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#e9e6df;text-decoration:none;border:1px solid rgba(255,255,255,.22)}.ah-bar a.p{background:#e9e6df;color:#0a0a0b;border-color:#e9e6df}body{padding-bottom:72px}}.ah-mid{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:34px 0;margin:0}.ah-mid .wrap{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:center;text-align:center}.ah-mid p{margin:0 18px 0 0}</style>
@@ -214,14 +214,11 @@ footer a{color:var(--silver);text-decoration:none}
         </ul>
       </div>
       <form class="lead-form" action="https://formsubmit.co/ajax/andrew.hill@dashnc.com" method="POST" novalidate>
-        <div class="lf-row">
-          <input type="text" name="first_name" placeholder="First name" required autocomplete="given-name" aria-label="First name">
-          <input type="text" name="last_name" placeholder="Last name" required autocomplete="family-name" aria-label="Last name">
-        </div>
+        <input type="text" name="name" placeholder="Your name" required autocomplete="name" aria-label="Your name">
         <input type="email" name="email" placeholder="Email" required autocomplete="email" aria-label="Email">
         <input type="tel" name="phone" placeholder="Phone" autocomplete="tel" aria-label="Phone (optional)">
-        <select name="timeline" required aria-label="Buying timeline">
-          <option value="" disabled selected>When are you planning to buy?</option>
+        <select name="timeline" aria-label="Buying timeline">
+          <option value="">When are you planning to buy? (optional)</option>
           <option>In the next 3 months</option>
           <option>In 3–6 months</option>
           <option>In 6–12 months</option>
@@ -306,16 +303,14 @@ footer a{color:var(--silver);text-decoration:none}
       </div>
       <form class="lead-form" action="https://formsubmit.co/ajax/andrew.hill@dashnc.com" method="POST" novalidate>
         <input type="text" name="address" placeholder="Property address" required autocomplete="street-address" aria-label="Property address">
+        <input type="text" name="name" placeholder="Your name" required autocomplete="name" aria-label="Your name">
         <div class="lf-row">
-          <input type="text" name="first_name" placeholder="First name" required autocomplete="given-name" aria-label="First name">
-          <input type="text" name="last_name" placeholder="Last name" required autocomplete="family-name" aria-label="Last name">
+          <input type="email" name="email" placeholder="Email" autocomplete="email" aria-label="Email" data-one-of="contact">
+          <input type="tel" name="phone" placeholder="Phone" autocomplete="tel" aria-label="Phone" data-one-of="contact">
+        <p class="lf-hint">Phone or email. One is enough.</p>
         </div>
-        <div class="lf-row">
-          <input type="email" name="email" placeholder="Email" required autocomplete="email" aria-label="Email">
-          <input type="tel" name="phone" placeholder="Phone" autocomplete="tel" aria-label="Phone (optional)">
-        </div>
-        <select name="timeline" required aria-label="Selling timeline">
-          <option value="" disabled selected>When are you thinking of selling?</option>
+        <select name="timeline" aria-label="Selling timeline">
+          <option value="">When are you thinking of selling? (optional)</option>
           <option>As soon as possible</option>
           <option>In the next 1–3 months</option>
           <option>In 3–6 months</option>
@@ -395,7 +390,7 @@ footer a{color:var(--silver);text-decoration:none}
 document.querySelectorAll('form.lead-form').forEach(function(formEl){
   formEl.addEventListener('submit', async function(e){
     e.preventDefault();
-    if(!formEl.checkValidity()){ formEl.reportValidity(); return; }
+    if(window.ahValidateLeadForm ? !window.ahValidateLeadForm(formEl) : !formEl.checkValidity()){ if(!window.ahValidateLeadForm) formEl.reportValidity(); return; }
     var status = formEl.querySelector('.lf-status');
     var btn = formEl.querySelector('button[type="submit"]');
     var data = new FormData(formEl);
