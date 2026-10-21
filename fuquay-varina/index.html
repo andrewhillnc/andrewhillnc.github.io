@@ -11,7 +11,7 @@
 <meta property="og:url" content="https://andrewhillrealtor.com/fuquay-varina/">
 <meta property="og:title" content="Fuquay-Varina, NC Homes &amp; Neighborhood Guide | Andrew Hill">
 <meta property="og:description" content="Fuquay-Varina guide from a local broker who grew up here. Request the current market report or a home value estimate.">
-<meta property="og:image" content="https://andrewhillrealtor.com/fuquay-varina/downtown-fuquay-varina.jpg">
+<meta property="og:image" content="https://andrewhillrealtor.com/fuquay-varina/downtown-fuquay-varina-aerial.jpg">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 
@@ -23,7 +23,7 @@
 
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
-{"@type":"RealEstateAgent","@id":"https://andrewhillrealtor.com/#andrewhill","name":"Andrew Hill","url":"https://andrewhillrealtor.com/","telephone":"+1-984-464-7329","email":"andrew.hill@dashnc.com","image":"https://andrewhillrealtor.com/fuquay-varina/downtown-fuquay-varina.jpg","worksFor":{"@type":"RealEstateAgent","name":"DASH Carolina","url":"https://dashcarolina.com"},"address":{"@type":"PostalAddress","streetAddress":"4800 Six Forks Rd, Ste 210","addressLocality":"Raleigh","addressRegion":"NC","postalCode":"27609","addressCountry":"US"},"areaServed":[{"@type":"City","name":"Fuquay-Varina","containedInPlace":{"@type":"AdministrativeArea","name":"Wake County, NC"}},{"@type":"Place","name":"Willow Spring, NC"},{"@type":"City","name":"Holly Springs"}]},
+{"@type":"RealEstateAgent","@id":"https://andrewhillrealtor.com/#andrewhill","name":"Andrew Hill","url":"https://andrewhillrealtor.com/","telephone":"+1-984-464-7329","email":"andrew.hill@dashnc.com","image":"https://andrewhillrealtor.com/fuquay-varina/downtown-fuquay-varina-aerial.jpg","worksFor":{"@type":"RealEstateAgent","name":"DASH Carolina","url":"https://dashcarolina.com"},"address":{"@type":"PostalAddress","streetAddress":"4800 Six Forks Rd, Ste 210","addressLocality":"Raleigh","addressRegion":"NC","postalCode":"27609","addressCountry":"US"},"areaServed":[{"@type":"City","name":"Fuquay-Varina","containedInPlace":{"@type":"AdministrativeArea","name":"Wake County, NC"}},{"@type":"Place","name":"Willow Spring, NC"},{"@type":"City","name":"Holly Springs"}]},
 {"@type":"WebPage","@id":"https://andrewhillrealtor.com/fuquay-varina/","name":"Fuquay-Varina, NC Homes & Neighborhood Guide","about":{"@type":"City","name":"Fuquay-Varina","address":{"@type":"PostalAddress","addressLocality":"Fuquay-Varina","addressRegion":"NC","addressCountry":"US"}},"author":{"@id":"https://andrewhillrealtor.com/#andrewhill"}},
 {"@type":"FAQPage","mainEntity":[
 {"@type":"Question","name":"What do homes cost in Fuquay-Varina right now?","acceptedAnswer":{"@type":"Answer","text":"Prices change month to month, so Andrew Hill sends current numbers on request instead of posting figures that go stale. Request the free Fuquay-Varina market report on this page and he will send recent sales, active inventory, and days on market for the area you are considering."}},
@@ -71,12 +71,16 @@ header{position:sticky;top:0;z-index:50;background:rgba(10,10,11,.94);backdrop-f
 .nav-call:hover{border-color:var(--silver)}
 
 /* hero */
-.hero{position:relative;min-height:78vh;display:flex;align-items:flex-end;padding:120px 0 72px;overflow:hidden}
-.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.42}
-.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,11,.25) 0%,rgba(10,10,11,.92) 100%)}
-.hero .wrap{position:relative;z-index:1}
-.hero h1{font-size:clamp(40px,7vw,76px);margin:14px 0 18px;max-width:16ch}
+.hero{padding:56px 0 80px}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+.hero-photo{width:100%;height:auto;max-width:600px;aspect-ratio:4/3;object-fit:cover;border:1px solid var(--line);justify-self:end}
+.hero h1{font-size:clamp(40px,5.6vw,68px);margin:14px 0 18px}
 .hero p.lede{max-width:56ch;font-size:18px;color:var(--silver)}
+@media(max-width:860px){
+  .hero{padding:0 0 64px}
+  .hero-grid{grid-template-columns:1fr;gap:34px}
+  .hero-photo{order:-1;max-width:none;border:0;border-bottom:1px solid var(--line);margin:0 -24px;width:calc(100% + 48px)}
+}
 .cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
 .btn-lux{display:inline-block;text-decoration:none;font-family:'Jost',sans-serif;font-size:12px;font-weight:400;letter-spacing:.28em;text-transform:uppercase;padding:17px 30px;border:1px solid var(--silver);color:var(--plat);background:transparent;cursor:pointer;transition:background .3s,color .3s;text-align:center}
 .btn-lux:hover{background:var(--plat);color:var(--black)}
@@ -140,15 +144,17 @@ footer a{color:var(--silver);text-decoration:none}
 <main>
 
 <div class="hero">
-  <img src="downtown-fuquay-varina.jpg" alt="Downtown Fuquay-Varina Main Street storefronts" width="800" height="600">
-  <div class="wrap">
-    <p class="eyebrow">Fuquay-Varina, NC · Wake County</p>
-    <h1>Fuquay-Varina Homes and Neighborhood Guide</h1>
-    <p class="lede">I was born and raised in Fuquay-Varina, and I help people buy and sell homes here as a broker with DASH Carolina. This page covers the parts of town, schools, parks, and what to check before you buy.</p>
-    <div class="cta-row">
-      <a class="btn-lux fill" href="#report">Get the Market Report</a>
-      <a class="btn-lux" href="#value">What's My Home Worth?</a>
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Fuquay-Varina, NC · Wake County</p>
+      <h1>Fuquay-Varina Homes and Neighborhood Guide</h1>
+      <p class="lede">I was born and raised in Fuquay-Varina, and I help people buy and sell homes here as a broker with DASH Carolina. This page covers the parts of town, schools, parks, and what to check before you buy.</p>
+      <div class="cta-row">
+        <a class="btn-lux fill" href="#report">Get the Market Report</a>
+        <a class="btn-lux" href="#value">What's My Home Worth?</a>
+      </div>
     </div>
+    <img class="hero-photo" src="downtown-fuquay-varina-aerial.jpg" alt="Aerial view of downtown Fuquay-Varina and Main Street" width="1200" height="900" fetchpriority="high">
   </div>
 </div>
 
