@@ -5,6 +5,7 @@
 
    Events (no form contents, names, phone numbers, emails or addresses are ever sent):
    - page_view       automatic
+   - spam_blocked    a lead form submission stopped by ahIsSpam; form_id
    - generate_lead   each page's form script, only after FormSubmit confirms delivery; form_id names the form
    - form_start      first interaction with a lead form; form_id
    - form_error      reason = validation | send_failed; form_id
@@ -39,6 +40,27 @@
       track('form_error', { form_id: formId(form), reason: 'validation' });
     }
     return ok;
+  };
+  /* Spam check for every form.lead-form, run before sending. Flags a
+     submission when it comes in under 3 seconds after the page loads,
+     contains forum-style or HTML links, has Cyrillic or CJK characters,
+     puts a web address in the name field, or has more than 2 links.
+     Flagged submissions are not sent; the visitor still sees Andrew's
+     phone number so a real person has a way to reach him. */
+  var loadedAt = Date.now();
+  window.ahIsSpam = function (form, data) {
+    if (Date.now() - loadedAt < 3000) return true;
+    var text = '', name = '';
+    data.forEach(function (v, k) {
+      if (k.charAt(0) === '_' || typeof v !== 'string') return;
+      text += ' ' + v;
+      if (k === 'name') name = v;
+    });
+    if (/\[url|\[\/url\]|<a\s|href\s*=/i.test(text)) return true;
+    if (/[\u0400-\u04FF\u3040-\u30FF\u4E00-\u9FFF]/.test(text)) return true;
+    if (/https?:|www\.|\.(ru|com|net|org|xyz|top)\b/i.test(name)) return true;
+    if ((text.match(/https?:\/\//gi) || []).length > 2) return true;
+    return false;
   };
   document.addEventListener('input', function (e) {
     var el = e.target;
