@@ -494,7 +494,7 @@ footer a:hover{color:var(--plat)}
           <input type="hidden" name="source" value="buyer review form, homepage">
           <input type="hidden" name="_subject" value="New BUYER lead: home review request">
           <input type="hidden" name="_template" value="table">
-          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_captcha" value="false"><input type="hidden" name="_blacklist" value="[url=, [/url], href=, .ru/">
           <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
           <button type="submit" class="btn-lux fill" data-event="buyer_review" style="width:100%;border:0;cursor:pointer">Send It for Review</button>
           <p class="lf-note">No obligation. Under current rules, a written buyer agreement may be required before I can show you a home in person.</p>
@@ -615,7 +615,7 @@ footer a:hover{color:var(--plat)}
           <input type="hidden" name="source" value="seller form) andrewhill website">
           <input type="hidden" name="_subject" value="New SELLER lead: sale strategy request">
           <input type="hidden" name="_template" value="table">
-          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_captcha" value="false"><input type="hidden" name="_blacklist" value="[url=, [/url], href=, .ru/">
           <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
           <button type="submit" class="btn-lux fill" data-event="seller_strategy" style="width:100%;border:0;cursor:pointer">Request My Sale Strategy</button>
           <p class="lf-note">No obligation and no pressure. You'll hear from me, and only me.</p>
@@ -2885,7 +2885,7 @@ footer a:hover{color:var(--plat)}
         </div>
         <p class="lf-hint">Phone or email. One is enough.</p>
         <textarea name="message" rows="3" placeholder="What are you looking for? Buying, selling, an area you're curious about: anything helps."></textarea>
-        <input type="hidden" name="source" value="andrewhill website"><input type="hidden" name="_subject" value="New lead from your website"><input type="hidden" name="_template" value="table"><input type="hidden" name="_captcha" value="false"><input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+        <input type="hidden" name="source" value="andrewhill website"><input type="hidden" name="_subject" value="New lead from your website"><input type="hidden" name="_template" value="table"><input type="hidden" name="_captcha" value="false"><input type="hidden" name="_blacklist" value="[url=, [/url], href=, .ru/"><input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
         <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
         <button type="submit" class="btn-lux fill" data-event="contact_general" style="width:100%;border:0;cursor:pointer">Send It to Me</button>
         <p class="lf-note">Comes straight to me. No newsletter, no spam. I reply personally, usually the same day.</p>
@@ -2993,6 +2993,12 @@ document.querySelectorAll('form.lead-form').forEach(formEl => {
     if (window.ahValidateLeadForm ? !window.ahValidateLeadForm(formEl) : !formEl.checkValidity()) { if (!window.ahValidateLeadForm) formEl.reportValidity(); return; }
     const data = new FormData(formEl);
     if (data.get('_honey') || data.get('_gotcha')) return;
+    if (window.ahIsSpam && window.ahIsSpam(formEl, data)) {
+      if (typeof gtag === 'function') gtag('event', 'spam_blocked', { form_id: (btn && btn.dataset.event) || 'lead_form', page_path: location.pathname });
+      formEl.querySelectorAll('input,textarea,select,button,.lf-title,.lf-note').forEach(function(el){ el.style.display = 'none'; });
+      if (status) status.textContent = "Received. If it's urgent, call or text me at 984 \u00b7 464 \u00b7 7329.";
+      return;
+    }
     const origLabel = btn.textContent;
     btn.disabled = true; btn.textContent = 'Sending\u2026';
     try {

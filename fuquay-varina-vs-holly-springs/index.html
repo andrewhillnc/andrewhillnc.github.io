@@ -208,7 +208,7 @@ footer a{color:var(--silver);text-decoration:none}
 <input type="hidden" name="source" value="Fuquay-Varina vs Holly Springs page">
 <input type="hidden" name="_subject" value="New BUYER lead: Fuquay-Varina vs Holly Springs">
 <input type="hidden" name="_template" value="table">
-<input type="hidden" name="_captcha" value="false">
+<input type="hidden" name="_captcha" value="false"><input type="hidden" name="_blacklist" value="[url=, [/url], href=, .ru/">
 <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
 <button type="submit" class="btn-lux fill" data-event="lead_submit_fvhs_ask">Compare Them for Me</button>
 <p class="lf-note">This comes straight to me. I reply personally, usually the same day.</p>
@@ -249,6 +249,12 @@ document.querySelectorAll('form.lead-form').forEach(function(formEl){
     var btn = formEl.querySelector('button[type="submit"]');
     var data = new FormData(formEl);
     if (data.get('_honey')) return;
+    if (window.ahIsSpam && window.ahIsSpam(formEl, data)) {
+      if (typeof gtag === 'function') gtag('event', 'spam_blocked', { form_id: (btn && btn.dataset.event) || 'lead_form', page_path: location.pathname });
+      formEl.querySelectorAll('input,textarea,select,button,.lf-title,.lf-note').forEach(function(el){ el.style.display = 'none'; });
+      if (status) status.textContent = "Received. If it's urgent, call or text me at 984 \u00b7 464 \u00b7 7329.";
+      return;
+    }
     var origLabel = btn.textContent;
     btn.disabled = true; btn.textContent = 'Sending…';
     try {
