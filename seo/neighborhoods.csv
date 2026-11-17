@@ -8,3 +8,5 @@ order,neighborhood,town,county,parent_page,status,andrew_connection,notes
 7,Falls River,Raleigh,Wake,/raleigh/,data-only,,"Branch neighborhood-falls-river pushed 2026-11-17, not merged; excludes Bedford at Falls River and The Enclave"
 8,Stonehenge,Raleigh,Wake,/raleigh/,data-only,,"Branch neighborhood-stonehenge pushed 2026-11-17, not merged; excludes Cottages, Manor, Woods of Stonehenge, Stonehenge Park, Stonehenge on the Park"
 9,Brookhaven,Raleigh,Wake,/raleigh/,data-only,,"Branch neighborhood-brookhaven pushed 2026-11-17, not merged; excludes Olde Brookhaven, Pines, Reserve, Estates, Brookhaven West"
+10,Golden Leaf Acres,Fuquay-Varina,Wake,/fuquay-varina/,ask,Grew up there,"Andrew is writing this page himself as the blueprint for Fuquay subdivision pages; do not build until he sends his draft"
+11,South Lakes,Fuquay-Varina,Wake,/fuquay-varina/,ask,,"140 searches a month, the only Fuquay subdivision with measurable volume (2026-11-17); ask if he knows it; build data-only if no answer in 3 weekdays"
