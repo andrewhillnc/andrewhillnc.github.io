@@ -5,8 +5,8 @@ order,neighborhood,town,county,parent_page,status,andrew_connection,notes
 4,Fuquay-Varina (neighborhood to be named by Andrew),Fuquay-Varina,Wake,/fuquay-varina/,ask,Grew up in Fuquay-Varina,Ask which Fuquay-Varina subdivisions he knows best; questions sent to Andrew 2026-11-17
 5,Riverwood (Riverwood Golf Club),Clayton,Johnston,/clayton/,ask,His listing at 115 Trantham Trail,Johnston County data is not in the Wake files; ask Andrew for a Johnston County sales export or use MLS numbers he provides; questions sent to Andrew 2026-11-17
 6,Thompson Ridge,Durham,Durham,/durham/,ask,Client purchase at 14 Pilatus Dr (Nov 2026),Durham County data is not in the Wake files; ask Andrew for a Durham County sales export
-7,Falls River,Raleigh,Wake,/raleigh/,data-only,,"Branch neighborhood-falls-river pushed 2026-11-17, not merged; excludes Bedford at Falls River and The Enclave"
-8,Stonehenge,Raleigh,Wake,/raleigh/,data-only,,"Branch neighborhood-stonehenge pushed 2026-11-17, not merged; excludes Cottages, Manor, Woods of Stonehenge, Stonehenge Park, Stonehenge on the Park"
-9,Brookhaven,Raleigh,Wake,/raleigh/,data-only,,"Branch neighborhood-brookhaven pushed 2026-11-17, not merged; excludes Olde Brookhaven, Pines, Reserve, Estates, Brookhaven West"
-10,Golden Leaf Acres,Fuquay-Varina,Wake,/fuquay-varina/,ask,Grew up there,"Andrew is writing this page himself as the blueprint for Fuquay subdivision pages; do not build until he sends his draft"
+7,Falls River,Raleigh,Wake,/raleigh/,skip,,"Branch neighborhood-falls-river pushed 2026-11-17, not merged; excludes Bedford at Falls River and The Enclave; skipped 2026-11-17 (Fuquay first), branch kept unmerged"
+8,Stonehenge,Raleigh,Wake,/raleigh/,skip,,"Branch neighborhood-stonehenge pushed 2026-11-17, not merged; excludes Cottages, Manor, Woods of Stonehenge, Stonehenge Park, Stonehenge on the Park; skipped 2026-11-17 (Fuquay first), branch kept unmerged"
+9,Brookhaven,Raleigh,Wake,/raleigh/,skip,,"Branch neighborhood-brookhaven pushed 2026-11-17, not merged; excludes Olde Brookhaven, Pines, Reserve, Estates, Brookhaven West; skipped 2026-11-17 (Fuquay first), branch kept unmerged"
+10,Golden Leaf Acres,Fuquay-Varina,Wake,/fuquay-varina/,ask,Grew up there,Andrew is writing this page himself as the blueprint for Fuquay subdivision pages; do not build until he sends his draft
 11,South Lakes,Fuquay-Varina,Wake,/fuquay-varina/,ask,,"140 searches a month, the only Fuquay subdivision with measurable volume (2026-11-17); ask if he knows it; build data-only if no answer in 3 weekdays"
