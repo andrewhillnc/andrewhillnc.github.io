@@ -10,3 +10,5 @@ money-words.csv is the one list every report and scheduled task reads. One row p
 
 Volumes: DataForSEO via OpenSEO, US, pulled 2026-11-17.
 Subdivision pages (neighborhoods.csv) are spokes: each links up to its town pillar using the pillar's money phrase as the link words.
+
+leads-log.csv: one row per real website lead (no names, emails, phones or addresses): date, lead type, the page it came from, what the lead typed in the "What you searched" box, and the money word it proves (the owner page's word, or the typed search if it matches one). When a money word gets its first real lead, its group in money-words.csv changes to "proven" with the date and reason.
